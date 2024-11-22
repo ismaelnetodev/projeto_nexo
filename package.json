@@ -1,39 +1,31 @@
 {
-  "name": "",
+  "name": "projeto_nexo",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "type": "module",
-  "license": "AGPL-version-3.0",
-  "private": false,
-  "engines": {
-    "node": ">= 14.0.0",
-    "npm": ">= 6.0.0"
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js"
   },
-  "homepage": "",
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "git+https://github.com/ismaelnetodev/projeto_nexo.git"
   },
-  "bugs": "",
   "keywords": [],
-  "author": {
-    "name": "",
-    "email": "",
-    "url": ""
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ismaelnetodev/projeto_nexo/issues"
   },
-  "contributors": [],
-  "scripts": {
-    "dev": "",
-    "test": ""
-  },
+  "homepage": "https://github.com/ismaelnetodev/projeto_nexo#readme",
   "dependencies": {
-    "bcryptjs": "^2.4.3",
-    "cookie-parse": "^0.4.0",
+    "bcrypt": "^5.1.1",
     "dotenv": "^16.4.5",
-    "express-rate-limit": "^7.4.1",
+    "express": "^4.21.1",
     "jsonwebtoken": "^9.0.2",
-    "mongoose": "^8.8.2",
-    "validator": "^13.12.0"
+    "mongoose": "^8.8.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.7"
   }
 }
