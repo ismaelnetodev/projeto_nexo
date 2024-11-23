@@ -32,7 +32,7 @@ function getUniqueRandomQuestion() {
 // Pegar questão da API e verificar se veio certinho
 async function fetchQuestion(year, index) {
     try {
-        //const res = await fetch(`https://api.enem.dev/v1/exams/${year}/questions/${index}`);
+        const res = await fetch(`https://api.enem.dev/v1/exams/${year}/questions/${index}`);
         if (!res.ok) {
             throw new Error(`Erro ao buscar questão: ${res.status}`);
         }
@@ -54,8 +54,11 @@ function renderQuestion(data) {
     // Processar o contexto para Markdown (![]()) e outros textos
     let contextHtml = "";
     if (data.context) {
-        // Substituir todas as marcações de imagens no formato Markdown por tags <img>
         contextHtml = data.context.replace(/!\[[^\]]*\]\((https?:\/\/[^\s]+)(?:\s+"[^"]*")?\)/g, (match, url) => {
+            // Verificar se a imagem do contexto já está em `files` para evitar duplicação
+            if (data.files && data.files.includes(url)) {
+                return ""; // Ignorar a renderização dessa imagem
+            }
             return `<img src="${url}" alt="Imagem do contexto" style="max-width: 100%; margin: 10px 0;">`;
         });
 
@@ -71,15 +74,16 @@ function renderQuestion(data) {
 
     // Renderizar as alternativas
     const alternativesHtml = data.alternatives.map((alt) => {
+        const alternativeId = `alternative-${alt.letter}`; // ID único para cada alternativa
         const alternativeContent = alt.text
             ? alt.text
             : alt.file
-                ? `<img src="${alt.file}" alt="Imagem da alternativa ${alt.letter}" style="max-width: 100%; margin: 10px 0;">`
+                ? `<img src="${alt.file}" alt="Imagem da alternativa ${alt.letter}">`
                 : "Sem texto ou imagem";
-
+    
         return `
-            <label style="display: block; margin-bottom: 10px;">
-                <input type="radio" name="answer" value="${alt.letter}">
+            <input type="radio" id="${alternativeId}" name="answer" value="${alt.letter}" style="display: none;">
+            <label for="${alternativeId}" class="custom-radio">
                 ${alt.letter}: ${alternativeContent}
             </label>
         `;
@@ -101,10 +105,16 @@ function renderQuestion(data) {
     questionArea.dataset.correctAnswer = data.correctAlternative;
 }
 
-
+let questionAnswered = false; 
 
 // Validar se a resposta está correta
 function checkAnswer() {
+
+    if (questionAnswered) {
+        console.log("questao respondida");
+        return;
+    }
+
     const selected = document.querySelector('input[name="answer"]:checked');
     if (!selected) {
         feedback.textContent = "Selecione uma resposta antes de enviar.";
@@ -114,35 +124,45 @@ function checkAnswer() {
 
     const correctAnswer = questionArea.dataset.correctAnswer;
 
-    const allAlternatives = document.querySelectorAll('input[name="anwser"]');
+    const allAlternatives = document.querySelectorAll('input[name="answer"]');
     allAlternatives.forEach(input => {
         input.disabled = true;
-    })
+    });
+
+    submitAnswerBtn.disabled = true; // Desativa o botão de envio
+    questionAnswered = true; // Marca a questão como respondida
+
     if (selected.value === correctAnswer) {
-        feedback.textContent = "Resposta correta!";
-        feedback.style.color = "green";
         score += 84;
         updateScore();
-    } else {
-        feedback.textContent = `Resposta incorreta. A correta era: ${correctAnswer}`;
-        feedback.style.color = "red";
     }
 }
 
 function updateScore(){
-    scoreDisplay.textContent = `Pontuação: ${score}`;
+    console.log(score);
+}
+
+function checkAnswerAndLoadNext(){
+    checkAnswer();
+    if (questionAnswered) {
+        setTimeout(loadQuestion, 1000);
+    }
 }
 
 // Carregar uma nova questão
 async function loadQuestion() {
     feedback.textContent = ""; // Limpa o feedback anterior
+
+    submitAnswerBtn.disabled = false;
+    questionAnswered = false;
+
     const { year, index } = getUniqueRandomQuestion();
     const questionData = await fetchQuestion(year, index);
     renderQuestion(questionData);
 }
 
 // Eventos dos botões
-submitAnswerBtn.addEventListener('click', checkAnswer);
+submitAnswerBtn.addEventListener('click', checkAnswerAndLoadNext);
 nextQuestionBtn.addEventListener('click', loadQuestion);
 
 // Carrega a primeira questão

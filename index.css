@@ -9,13 +9,204 @@
 body {
     background-color: #121212;
     color: #FFFFFF;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
 }
 
-#question-area{
-    width: 30%;
-    height: auto;
+.container{
+    width: 50%;
+    height: fit-content;
     border: 1px solid #5c5b5b;
     border-radius: 10px;
-    background-color: beige;
+    background-color: rgb(105, 105, 104);
+    padding: 15px;
+    margin-top: 10px;
 }
 
+/* Estilização do contêiner principal da questão */
+.question {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+}
+
+/* Estilização do título da questão */
+.question h2 {
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+/* Estilização do texto do contexto */
+.question p {
+    font-size: 1rem;
+    line-height: 1.5;
+    margin: 10px 0;
+    color: #555;
+}
+
+/* Estilização das imagens dentro do contexto e questão */
+.question img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 15px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Estilização do contêiner das alternativas */
+.answer-options {
+    margin-top: 15px;
+}
+
+/* Estilização de cada alternativa (label) */
+.answer-options label {
+    display: block;
+    font-size: 1rem;
+    color: #444;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+/* Estilização dos botões de rádio */
+.answer-options input[type="radio"] {
+    margin-right: 10px;
+}
+
+/* Estilização de imagens nas alternativas */
+.answer-options img {
+    max-width: 100%;
+    height: auto;
+    margin-top: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+/* Feedback visual para hover */
+.answer-options label:hover {
+    background-color: #f0f0f0;
+    border-radius: 5px;
+}
+
+/* Estilização do contêiner principal das alternativas */
+.answer-options {
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Espaço entre os quadrados */
+}
+
+/* Oculta o botão de rádio padrão */
+.answer-options input[type="radio"] {
+    display: none;
+}
+
+/* Estilização do label como quadrado clicável */
+.answer-options label {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    border: 2px solid #ddd; /* Borda do quadrado */
+    border-radius: 8px; /* Canto arredondado */
+    padding: 10px 15px;
+    background-color: #f9f9f9; /* Cor de fundo */
+    cursor: pointer; /* Indica que é clicável */
+    transition: all 0.3s ease; /* Suaviza transições */
+    font-size: 1rem; /* Tamanho do texto */
+}
+
+/* Efeito ao passar o mouse sobre a alternativa */
+.answer-options label:hover {
+    background-color: #e0f7fa; /* Cor de fundo ao passar o mouse */
+    border-color: #0097a7; /* Cor da borda ao passar o mouse */
+}
+
+/* Indicação visual para a alternativa selecionada */
+.answer-options input[type="radio"]:checked + label {
+    background-color: #b2ebf2; /* Cor de fundo para selecionados */
+    border-color: #00796b; /* Cor da borda para selecionados */
+    color: #004d40; /* Cor do texto */
+    font-weight: bold; /* Destaque no texto */
+}
+
+/* Adicionar um círculo ao lado do texto para indicar seleção */
+.answer-options label::before {
+    content: "";
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #ddd;
+    border-radius: 50%;
+    margin-right: 15px; /* Espaço entre o círculo e o texto */
+    transition: all 0.3s ease;
+}
+
+/* Muda a aparência do círculo para preenchido quando selecionado */
+.answer-options input[type="radio"]:checked + label::before {
+    background-color: #00796b; /* Cor de preenchimento do círculo */
+    border-color: #00796b; /* Cor da borda do círculo */
+}
+
+#submit-answer-btn{
+    width: 150px;
+    height: 50px;
+    background-color: #00796b;
+    border: none;
+    border-radius: 20px;
+    color: white;
+    cursor: pointer;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    margin-right: 10px;
+}
+
+#submit-answer-btn:hover{
+    transform: scale(1.1);
+}
+
+#next-question-btn{
+    width: 150px;
+    height: 50px;
+    background-color: #86851f;
+    border: none;
+    border-radius: 20px;
+    color: white;
+    cursor: pointer;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    margin-right: 10px;
+}
+
+#next-question-btn:hover{
+    transform: scale(1.1);
+}
+
+.end-questions{
+    width: 150px;
+    height: 50px;
+    background-color: #db3c3c;
+    border: none;
+    border-radius: 20px;
+    color: white;
+    cursor: pointer;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    margin-right: 10px;
+    float: right;
+}
+
+.end-questions:hover{
+    transform: scale(1.1);
+}
+
+.end-questions a{
+    color: white;
+    text-decoration: none;
+}
+
+a:visited{
+    color: #FFFFFF;
+    text-decoration: none;
+}
