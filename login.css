@@ -1,0 +1,84 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+  }
+
+button, input{
+    border: none;
+}
+body{
+    background-color: #121212;
+}
+div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+    flex-direction: column;
+}
+div img{
+    width: 100px;
+    height: 100px;
+}
+#caixa{
+    display: flex;
+    background-color: #363636;
+    flex-direction: column;
+    justify-self: center;
+    align-items: center;
+    width: 350px;
+    height: 450px;
+    border-radius: 20px;
+    margin-top: 20px;
+}
+#caixa form{
+    text-align: center;
+    margin-top: 45px;
+}
+#entrar{
+    color: #ffffff;
+    background-color: #74bdf7;
+    width: 100px;
+    height: 40px;
+    border-radius: 12px;
+    margin-top: 30px;
+    opacity: 1;
+    transition: 0.3s;
+}
+
+#entrar:hover{
+    cursor: pointer;
+    opacity: 0.6;
+}
+
+input{
+    background-color: #656565;
+    width: 200px;
+    height: 30px;
+    border-radius: 12px;
+    margin: 10px auto;
+    color: #ffffff;
+    padding: 5px;
+}
+a:visited{
+    color: #74bdf7;
+}
+input::placeholder{
+    color: #acacac;
+    padding: 10px;
+}
+#label{
+    color: #ffffff;
+    display: block;
+}
+p{
+    color: #ffffff;
+    margin-top: 5px;
+    font-size: 15px;
+}
+h1{
+    color: #ffffff;
+    font-size: 40px;
+    margin-bottom: 20px;
+}

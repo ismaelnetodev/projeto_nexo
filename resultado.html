@@ -1,39 +1,74 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nexo.com</title>
-    <link rel="stylesheet" href="nexo.css" />
+    <title>Desempenho do Aluno</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div id="bloco1">    
-        <h2 id="mensagem">
-            Bom Trabalho, Max!
-        </h2>
-    </div>
-    <div id="bloco2">
-        <section id="grafico">
-            <p>2%</p>
-            <p>Incorretas</p>
-            <p>98%</p>
-            <p>Corretas</p>
-        </section>
-        <section id="numero_questoes">
-            <p>5</p>
-            <p>85</p>
-            <p>Número total de questões incorretas: 5</p>
-        </section>
-    </div>
-    <div id="bloco3">
-        <section id="ranking_atual">
-            <h3>Ranking Atual</h3>
-            <h3>14572°</h3>
-        </section>
-        <section id="resumo">
-            <p>+<span> 660 </span>Pontos</p>
-            <p>+<span> 106 </span>Posições no ranking</p>
-        </section>
+    <div class="container">
+       
+
+        <!-- Navbar horizontal com elementos posicionados corretamente -->
+        <header class="navbar">
+           
+            <!-- Logo no canto direito -->
+            <div class="logo">
+                <img src="assets/imgs/nexo_logo.svg" alt="Logo">
+            </div>
+            <!-- Botões de navegação no centro -->
+            <nav class="nav-buttons">
+                <a href="#">Desempenho Geral</a>
+                <a href="#">Histórico de Atividades</a>
+                <a href="#">Materiais de Apoio</a>
+                <a href="#">Configurações</a>
+            </nav>
+
+            <div class="user-info">
+                <div class="user-photo-container">
+                    <img src="" alt="Foto do Usuário" class="user-photo">
+                </div>
+            </div>
+
+        </header>
+
+         <!-- Nome "Bom trabalho, Max!" fora da navbar, no início do container -->
+         <div class="user-greeting-container">
+            <h1 class="user-greeting">Bom trabalho, Max!</h1>
+        </div>
+
+        <!-- Conteúdo principal -->
+        <main class="content">
+            <!-- Seções de desempenho -->
+            <section class="performance">
+                <div class="chart">
+                    <div class="circle">
+                        <span>98%</span>
+                    </div>
+                    <div class="chart-info">
+                        <p>2% Incorretas</p>
+                        <p>98% Corretas</p>
+                    </div>
+                </div>
+                <div class="details">
+                    <p>Número total de questões incorretas: <strong>5</strong></p>
+                    <button class="view-results">Visualizar Resultados</button>
+                </div>
+            </section>
+
+            <section class="ranking">
+                <div class="ranking-left">
+                    <p>Ranking Atual</p>
+                    <h2>14572º</h2>
+                </div>
+                <div class="ranking-right">
+                    <p><span>+660</span> Pontos</p>
+                    <p><span>+106</span> Posições no ranking</p>
+                </div>
+            </section>
+        </main>
     </div>
 </body>
 </html>

@@ -1,0 +1,21 @@
+/* Reset e configuração geral */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background-color: #121212;
+    color: #FFFFFF;
+}
+
+#question-area{
+    width: 30%;
+    height: auto;
+    border: 1px solid #5c5b5b;
+    border-radius: 10px;
+    background-color: beige;
+}
+
