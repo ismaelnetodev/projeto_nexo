@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Desempenho do Aluno</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="resultado.css">
 </head>
 <body>
     <div class="container">
@@ -28,7 +28,7 @@
 
             <div class="user-info">
                 <div class="user-photo-container">
-                    <img src="" alt="Foto do Usuário" class="user-photo">
+                    <img src="assets/imgs/Maxx.png" alt="Foto do Usuário" class="user-photo">
                 </div>
             </div>
 
@@ -44,29 +44,21 @@
             <!-- Seções de desempenho -->
             <section class="performance">
                 <div class="chart">
-                    <div class="circle">
-                        <span>98%</span>
-                    </div>
-                    <div class="chart-info">
-                        <p>2% Incorretas</p>
-                        <p>98% Corretas</p>
-                    </div>
+                    <img src="assets/imgs/graph.png" width="180px">
                 </div>
                 <div class="details">
-                    <p>Número total de questões incorretas: <strong>5</strong></p>
-                    <button class="view-results">Visualizar Resultados</button>
+                    <p>Acertos: <strong>15</strong></p>
+                    <p>Erros: <strong>4</strong></p>
                 </div>
+                    <div class="action-btn">
+                        <button class="view-results">Visualizar Resultados</button>
+                        <button class="new-questions"><a href="index.html">Novo simulado.</a></button>
+                    </div>
             </section>
 
             <section class="ranking">
-                <div class="ranking-left">
-                    <p>Ranking Atual</p>
-                    <h2>14572º</h2>
-                </div>
-                <div class="ranking-right">
-                    <p><span>+660</span> Pontos</p>
-                    <p><span>+106</span> Posições no ranking</p>
-                </div>
+                    <h2>Ranking Atual</h2>
+                    <img src="assets/imgs/table.png" alt="">
             </section>
         </main>
     </div>
